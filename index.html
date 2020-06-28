@@ -1,0 +1,80 @@
+<html>
+<header>
+
+	<style>
+		svg {
+			background: black;
+			fill: none;
+			stroke: red;
+			stroke-width: 0.05%;
+		}
+
+		svg text {
+			font-size: 60px;
+			fill: white;
+			stroke: none;
+			max-height: 80%;
+
+		}
+	</style>
+</header>
+
+<body>
+
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="-5000 -9000 14000 14000" id="map">
+	</svg>
+
+	<script>
+	
+			var implantations  = [
+				{x:  1000, z:  -2000, name : "spawn"},
+				{x:  1600, z:  -1800, name : "mine treguy"},
+				{x:   792, z:    -81, name : "AtrusThot"},
+				{x:  1300, z:   -430, name : "Lumina"},
+				{x:   576, z:  -1158, name : "Elwyng"},
+				{x:   580, z:  -2443, name : "Krysaliah"},
+				{x:  1380, z:  -4630, name : "Tonksev"},
+				{x:  -672, z:  -1533, name : "Beloup"},
+				{x: -1250, z:  -2350, name : "Prism"},
+				{x:  3400, z:  -1200, name : "Chris"},
+			];
+		
+			for(implantation of implantations) {
+				var map = document.getElementById("map");
+	
+				var circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+				circle.setAttribute("cx", implantation.x);
+				circle.setAttribute("cy", implantation.z);
+				circle.setAttribute("r", 500);
+
+				var nameText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+				nameText.setAttribute("text-anchor", "middle");
+				nameText.setAttribute("x", implantation.x);
+				nameText.setAttribute("y", implantation.z);
+
+				var nameTspan = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+				nameTspan.setAttribute("dy", "-0.6em");
+				nameTspan.textContent = implantation.name;
+				nameText.appendChild(nameTspan);
+
+				var coordText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+				coordText.setAttribute("text-anchor", "middle");
+				coordText.setAttribute("x", implantation.x);
+				coordText.setAttribute("y", implantation.z);
+
+				var coordTspan = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+				coordTspan.setAttribute("dy", "0.6em");
+				coordTspan.textContent = `x:${ implantation.x} y:${ implantation.z }`;
+				coordText.appendChild(coordTspan);
+				
+				map.appendChild(circle);
+				map.appendChild(nameText);
+				map.appendChild(coordText);
+	
+			}
+	
+		</script>
+	
+</body>
+
+</html>
